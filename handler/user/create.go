@@ -11,7 +11,12 @@ import (
 	"github.com/lexkong/log/lager"
 )
 
-// Create creates a new user account.
+// @Summary Add new user to the database
+// @Produce  json
+// @Param username body string true "Username" default("kong1")
+// @Param password body string true "Password" default("kong1234")
+// @Success 200 {string} json "{"code":0,"message":"OK","data":{"username":"kong"}}"
+// @Router /v1/user [post]
 func Create(c *gin.Context) {
 	log.Info("User Create function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest

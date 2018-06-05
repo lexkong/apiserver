@@ -14,6 +14,13 @@ import (
 )
 
 // Update update a exist user account info.
+// @Summary Update a user info by the user identifier
+// @Produce  json
+// @Param id path int true "The usr identifier"
+// @Param username body string true "Username"
+// @Param password body string true "Password"
+// @Success 200 {string} json "{"code":0,"message":"OK","data":null}"
+// @Router /v1/{id} [put]
 func Update(c *gin.Context) {
 	log.Info("Update function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	// Get the user id from the url parameter.
