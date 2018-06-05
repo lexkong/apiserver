@@ -6,10 +6,12 @@ import (
 	"apiserver/service"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
 )
 
 // List list the users in the database.
 func List(c *gin.Context) {
+	log.Info("List function called.")
 	var r ListRequest
 	if err := c.Bind(&r); err != nil {
 		SendResponse(c, errno.ErrBind, nil)
