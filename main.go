@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	_ "net/http/pprof"
 	"os"
 	"time"
 
@@ -70,6 +71,10 @@ func main() {
 			log.Fatal("The router has no response, or it might took too long to start up.", err)
 		}
 		log.Info("The router has been deployed successfully.")
+	}()
+
+	go func() {
+		log.Info(http.ListenAndServe(":8088", nil).Error())
 	}()
 
 	// Start to listening the incoming requests.
