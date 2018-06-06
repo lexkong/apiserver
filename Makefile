@@ -1,4 +1,4 @@
-all:
+all: gotool
 	@go build -v .
 clean:
 	rm -f apiserver
